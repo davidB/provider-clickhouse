@@ -59,13 +59,13 @@ jobs:
 
       - name: Build Artifacts
         run: |-
-          make -j2 XPKG_REG_ORGS="ghcr.io/${{ github.repository_owner }}" XPKG_REG_ORGS_NO_PROMOTE="ghcr.io/${{ github.repository_owner }}" BRANCH_NAME="main" VERSION="${{ steps.version.outputs.VERSION }}" build.all
+          make -j2 XPKG_REG_ORGS="ghcr.io/davidb" XPKG_REG_ORGS_NO_PROMOTE="ghcr.io/davidb" BRANCH_NAME="main" VERSION="${{ steps.version.outputs.VERSION }}" build.all
         env:
           BUILD_ARGS: "--load"
 
       - name: Publish Artifacts
         run: |-
-          make -j2 REGISTRY_ORGS="" XPKG_REG_ORGS="ghcr.io/${{ github.repository_owner }}" XPKG_REG_ORGS_NO_PROMOTE="ghcr.io/${{ github.repository_owner }}" BRANCH_NAME="main" VERSION="${{ steps.version.outputs.VERSION }}" publish
+          make -j2 REGISTRY_ORGS="" XPKG_REG_ORGS="ghcr.io/davidb" XPKG_REG_ORGS_NO_PROMOTE="ghcr.io/davidb" BRANCH_NAME="main" VERSION="${{ steps.version.outputs.VERSION }}" publish
 
   mirror-to-upbound:
     needs: publish-provider-package
